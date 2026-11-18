@@ -1,9 +1,517 @@
-body { font-family: system-ui, sans-serif; max-width: 860px; margin: 0 auto; padding: 16px; line-height: 1.6; color: #1f2933; }
-header { border-bottom: 3px solid #0e7490; margin-bottom: 16px; }
-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-nav a { color: #0e7490; font-weight: 600; text-decoration: none; }
-nav a:hover { text-decoration: underline; }
-footer { margin-top: 40px; color: #64748b; font-size: 14px; }
-img { max-width: 100%; }
+/* ==========================================================
+   css/style.css  (umumiy uslublar + bosh sahifa)
+   Barcha sahifalar shu faylni ulaydi: ranglar, menyu va footer
+   shu yerda. Bosh sahifaga oid klasslar "h-" bilan boshlanadi.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Nunito+Sans:wght@400;600;700&family=Sora:wght@500;700;800&display=swap");
+
+/* ---------- Ranglar va shriftlar ---------- */
+:root {
+  --ink: #0a1128;
+  --blue: #2f5bff;
+  --cyan: #22d3ee;
+  --violet: #7c5cff;
+  --sun: #ffc23c;
+  --sky: #e9efff;
+  --paper: #f6f8ff;
+  --white: #ffffff;
+  --text: #1b2340;
+  --muted: #5a6382;
+  --line: #dde4fb;
+
+  --font-head: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --radius-lg: 20px;
+  --radius-sm: 10px;
+  --page-width: 1100px;
+}
+
+/* ---------- Asosiy ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--paper);
+}
+
+img { display: block; max-width: 100%; }
 table { border-collapse: collapse; }
 th, td { border: 1px solid #cbd5e1; padding: 6px 10px; }
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* ---------- Menyu (hamma sahifada) ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 24px;
+  padding: 12px max(24px, calc((100% - var(--page-width)) / 2));
+  background: rgba(10, 17, 40, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-nav a {
+  padding: 6px 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--white);
+  border-color: var(--cyan);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--white);
+  border-color: var(--sun);
+}
+
+.site-nav .brand {
+  margin-right: 8px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--white);
+  border-bottom: 0;
+}
+
+.site-nav .brand span {
+  padding: 2px 10px;
+  margin-right: 4px;
+  color: var(--ink);
+  background: var(--sun);
+  border-radius: 8px;
+}
+
+/* ---------- Footer (hamma sahifada) ---------- */
+.site-footer {
+  margin-top: 90px;
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  background: var(--ink);
+}
+
+.site-footer p { margin: 0; }
+
+/* ==========================================================
+   BOSH SAHIFA
+   ========================================================== */
+
+/* ---------- Hero ---------- */
+.h-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 90px 24px 110px;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.h-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 60% 40%, #000 20%, transparent 75%);
+}
+
+.h-blob {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.h-blob--1 { width: 420px; height: 420px; top: -120px; right: -80px; background: var(--blue); }
+.h-blob--2 { width: 340px; height: 340px; bottom: -140px; left: -60px; background: var(--violet); animation-delay: -5s; }
+.h-blob--3 { width: 220px; height: 220px; top: 40%; left: 45%; background: var(--cyan); opacity: 0.3; animation-delay: -9s; }
+
+@keyframes drift {
+  to { transform: translate(40px, 30px) scale(1.15); }
+}
+
+.h-hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+.h-tag {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 6px 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--sun);
+  border-radius: 999px;
+}
+
+.h-hero__title {
+  margin: 0 0 20px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.h-hero__lead {
+  max-width: 46ch;
+  margin: 0 0 32px;
+  font-size: 1.18rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.h-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.h-btn {
+  display: inline-block;
+  padding: 13px 24px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.h-btn:hover { transform: translateY(-3px); }
+
+.h-btn--main {
+  color: var(--ink);
+  background: var(--sun);
+}
+
+.h-btn--main:hover { background: #ffd067; }
+
+.h-btn--ghost {
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.h-btn--ghost:hover { border-color: var(--cyan); }
+
+.h-mentor {
+  margin: 28px 0 0;
+  padding-left: 14px;
+  border-left: 4px solid var(--sun);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.h-mentor strong {
+  color: var(--white);
+  font-family: var(--font-head);
+}
+
+/* ---------- Terminal oynasi ---------- */
+.term {
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background: #070c1f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  transform: rotate(1.5deg);
+}
+
+.term__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.term__dot { width: 12px; height: 12px; border-radius: 50%; }
+.term__dot--r { background: #ff5f57; }
+.term__dot--y { background: #febc2e; }
+.term__dot--g { background: #28c840; }
+
+.term__title {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.term__body {
+  min-height: 220px;
+  padding: 20px 20px 24px;
+}
+
+.term__line {
+  display: block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #d6e2ff;
+  line-height: 2;
+  animation: type 1.3s steps(var(--n)) forwards;
+  animation-delay: var(--d);
+}
+
+.term__p { color: var(--sun); }
+.term__line--ok { color: #4ade80; }
+
+@keyframes type {
+  from { width: 0; }
+  to { width: calc(var(--n) * 1ch); }
+}
+
+.term__cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--cyan);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- Yugurma qator ---------- */
+.h-marquee {
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--sun);
+}
+
+.h-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.h-marquee:hover .h-marquee__track { animation-play-state: paused; }
+
+.h-marquee__group { display: flex; }
+
+.h-marquee__group span {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 0 14px 28px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.h-marquee__group span::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--ink);
+  transform: rotate(45deg);
+}
+
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Bo'limlar ---------- */
+.h-section {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 84px 24px 0;
+}
+
+.h-title {
+  margin: 0 0 10px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.h-sub {
+  max-width: 60ch;
+  margin: 0 0 36px;
+  color: var(--muted);
+}
+
+/* ---------- Sahifa kartochkalari ---------- */
+.h-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.h-page {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px;
+  color: inherit;
+  text-decoration: none;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.h-page:hover {
+  transform: translateY(-6px);
+  border-color: var(--blue);
+  box-shadow: 0 20px 40px rgba(47, 91, 255, 0.16);
+}
+
+.h-page__icon {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 6px;
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  border-radius: 14px;
+}
+
+.h-page h3 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.h-page p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+.h-page__go {
+  margin-top: auto;
+  padding-top: 12px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.h-page--empty {
+  background: transparent;
+  border: 2px dashed #b8c4f0;
+}
+
+.h-page__icon--empty {
+  color: var(--blue);
+  font-family: var(--font-head);
+  font-weight: 800;
+  background: var(--sky);
+}
+
+/* ---------- Qadamlar ---------- */
+.h-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.h-step {
+  padding: 26px 22px 24px;
+  color: var(--white);
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+}
+
+.h-step::before {
+  counter-increment: step;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 14px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  color: var(--ink);
+  background: var(--sun);
+  border-radius: 50%;
+}
+
+.h-step h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+}
+
+.h-step p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.h-step code {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--cyan);
+  word-break: break-word;
+}
+
+/* ---------- Telefon uchun ---------- */
+@media (max-width: 860px) {
+  .h-hero { padding: 60px 20px 80px; }
+  .h-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .term { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .h-blob, .h-marquee__track, .term__cursor { animation: none; }
+  .term__line { width: auto; animation: none; }
+  .h-btn, .h-page { transition: none; }
+  .h-btn:hover, a.h-page:hover { transform: none; }
+}
