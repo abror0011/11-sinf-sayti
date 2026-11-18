@@ -1,0 +1,259 @@
+/* ==========================================================
+   bizning-sinf.css
+   Page: Bizning sinf (11th Grade, IT Park Junior Developers)
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Nunito+Sans:wght@400;600&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  --navy: #0f1b3d;
+  --blue: #2f5bff;
+  --sky: #e9efff;
+  --sun: #ffc23c;
+  --ink: #1b2340;
+  --muted: #5a6382;
+  --paper: #f7f9ff;
+  --white: #ffffff;
+
+  --font-head: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Nunito Sans", "Segoe UI", sans-serif;
+
+  --radius-lg: 20px;
+  --radius-sm: 8px;
+  --page-width: 1100px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- Header / hero ---------- */
+.hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(47, 91, 255, 0.55), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(255, 194, 60, 0.18), transparent 40%),
+    var(--navy);
+  color: var(--white);
+  padding: 90px 24px 110px;
+}
+
+.hero__inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+.hero__tag {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 6px 14px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  background: var(--sun);
+  border-radius: 999px;
+}
+
+.hero__title {
+  max-width: 14ch;
+  margin: 0 0 20px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero__lead {
+  max-width: 48ch;
+  margin: 0 0 40px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mentor badge (under the class name) */
+.mentor {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 22px;
+  border-left: 4px solid var(--sun);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.mentor__label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mentor__name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+/* ---------- Main content ---------- */
+.content {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.section-title {
+  margin: 0 0 12px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--navy);
+}
+
+.intro {
+  padding: 64px 0 40px;
+}
+
+.intro__text {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid #dde4fb;
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(15, 27, 61, 0.14);
+}
+
+.card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--sky);
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__body {
+  padding: 22px 22px 26px;
+}
+
+.card__title {
+  margin: 0 0 8px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--navy);
+}
+
+.card__text {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+/* ---------- Values ---------- */
+.values {
+  margin-top: 72px;
+  padding: 40px;
+  background: var(--sky);
+  border-radius: var(--radius-lg);
+}
+
+.values__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 3px solid var(--blue);
+}
+
+.value strong {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  color: var(--navy);
+}
+
+.value span {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  background: var(--navy);
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .hero {
+    padding: 60px 20px 70px;
+  }
+
+  .values {
+    padding: 28px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
