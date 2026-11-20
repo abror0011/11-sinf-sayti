@@ -1,0 +1,71 @@
+/* Dars jadvali — dark blue theme */
+:root{color-scheme:dark}
+body{margin:0;background:#0A1630}
+*{box-sizing:border-box}
+.pg{font-family:Inter,system-ui,sans-serif;color:#E6EEFF;max-width:1280px;margin:0 auto;padding:40px 40px 48px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+h1{margin:0;font-size:36px;letter-spacing:-.02em;color:#fff}
+.sub{margin:6px 0 0;color:#9DB0D6;font-size:15px}
+.nav{display:flex;gap:8px;align-items:center}
+.nav button{min-height:44px;min-width:44px;padding:0 16px;border-radius:12px;border:1px solid #27407F;background:#162B5C;font:600 14px Inter,sans-serif;color:#E6EEFF}
+.nav .pri{background:#2A5FE0;border-color:#2A5FE0;color:#fff}
+.nav button:focus-visible{outline:3px solid #00E5FF;outline-offset:2px}
+
+/* Grid */
+.sc{overflow-x:auto;padding:8px;margin:-8px}
+.grid{min-width:980px;display:flex;flex-direction:column;gap:8px}
+.row,.hd{display:grid;grid-template-columns:96px repeat(6,1fr);gap:8px}
+
+/* Day headers (clickable, no JS): one day at a time, radio group */
+.dh{position:relative;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:12px;font-size:12px;color:#9DB0D6;background:#11224A;cursor:pointer;transition:box-shadow .18s ease}
+.dh strong{font-size:15px;color:#E6EEFF}
+.dh.now{background:#2A5FE0;color:#DCE5FF}
+.dh.now strong{color:#fff}
+.dh em{font-style:normal;font-size:11px;font-weight:600;background:#fff;color:#2A5FE0;border-radius:99px;padding:1px 8px}
+.dh:hover{box-shadow:0 0 0 2px #00E5FF}
+.dh:has(input:focus-visible){box-shadow:0 0 0 3px #00E5FF}
+.clr{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid #27407F;font:600 14px Inter,sans-serif;color:#E6EEFF;cursor:pointer;transition:opacity .18s ease}
+.clr:hover{box-shadow:0 0 0 2px #00E5FF}
+.clr:has(input:focus-visible){outline:3px solid #00E5FF;outline-offset:2px}
+.pg:has(.d0:checked) .clr{opacity:.45}
+.vh{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+
+/* Time column */
+.tm{display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:12px;color:#9DB0D6}
+.tm strong{font-size:28px;color:#fff;line-height:1}
+
+/* Lesson cells */
+.c{border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:2px;font-size:12px;color:#C3CFEA;min-height:92px;cursor:default;transition:box-shadow .18s ease}
+.c b{font-size:14px;color:#F1F5F9;display:flex;gap:6px;align-items:center}
+.c b:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--d);flex:none}
+.alt{margin-top:auto;padding-top:8px;border-top:1px dashed rgba(255,255,255,.3);display:flex;flex-direction:column;gap:1px}
+.alt b{font-size:12px}
+.m{background:#1D3F8F;--d:#6EA0FF}
+.l{background:#4A2E17;--d:#FB923C}
+.h{background:#33265E;--d:#A78BFA}
+.p{background:#0E4A52;--d:#2DD4BF}
+.b{background:#1F4524;--d:#86D26A}
+.t{box-shadow:0 0 0 2px #7FB0FF}
+
+/* Teacher name: hidden until hover / focus */
+.tn{font-weight:600;color:#fff;opacity:0;transform:translateY(-3px);transition:opacity .18s ease,transform .18s ease}
+.c:hover .tn,.c:focus-visible .tn{opacity:1;transform:none}
+
+/* Selected day column: lime outline (header + cells) */
+.pg:has(.d1:checked) .row .c:nth-child(2),.pg:has(.d1:checked) .hd .dh:nth-child(2){box-shadow:0 0 0 2px #A3E635}
+.pg:has(.d2:checked) .row .c:nth-child(3),.pg:has(.d2:checked) .hd .dh:nth-child(3){box-shadow:0 0 0 2px #A3E635}
+.pg:has(.d3:checked) .row .c:nth-child(4),.pg:has(.d3:checked) .hd .dh:nth-child(4){box-shadow:0 0 0 2px #A3E635}
+.pg:has(.d4:checked) .row .c:nth-child(5),.pg:has(.d4:checked) .hd .dh:nth-child(5){box-shadow:0 0 0 2px #A3E635}
+.pg:has(.d5:checked) .row .c:nth-child(6),.pg:has(.d5:checked) .hd .dh:nth-child(6){box-shadow:0 0 0 2px #A3E635}
+.pg:has(.d6:checked) .row .c:nth-child(7),.pg:has(.d6:checked) .hd .dh:nth-child(7){box-shadow:0 0 0 2px #A3E635}
+
+/* Hover / keyboard focus: cyan (wins over lime and today ring) */
+.c:hover,.c:focus-visible{outline:none;box-shadow:0 0 0 2px #00E5FF,0 0 16px 2px rgba(0,229,255,.55)!important}
+
+/* Legend */
+.lg{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;font-size:13px;color:#9DB0D6}
+.lg span{display:flex;gap:6px;align-items:center}
+.lg i{width:12px;height:12px;border-radius:4px;display:block}
+
+@media (max-width:700px){.pg{padding:24px 16px 32px}h1{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.c,.tn,.dh{transition:none}}
