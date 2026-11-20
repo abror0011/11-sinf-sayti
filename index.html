@@ -7,23 +7,119 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>11-A sinf sayti</h1>
-    <p>Bu saytni sinfimiz jamoa bo'lib, Git va GitHub yordamida yaratdi.</p>
-  </header>
 
-  <nav>
-    <a href="index.html">Bosh sahifa</a>
+  <nav class="site-nav">
+    <a class="brand" href="index.html"><span>11-A</span> sinf</a>
+    <a href="index.html" aria-current="page">Bosh sahifa</a>
+    <a href="bizning-sinf.html">Bizning sinf</a>
     <!-- MENYU: har guruh shu qatordan keyin o'z sahifasiga havola qo'shadi -->
+    <a href="pages/yutuqlar.html">Yutuqlarimiz</a>
   </nav>
 
+  <header class="h-hero">
+    <span class="h-blob h-blob--1" aria-hidden="true"></span>
+    <span class="h-blob h-blob--2" aria-hidden="true"></span>
+    <span class="h-blob h-blob--3" aria-hidden="true"></span>
+
+    <div class="h-hero__inner">
+      <div class="h-hero__text">
+        <p class="h-tag">IT Park Junior Developers</p>
+        <h1 class="h-hero__title">11-A sinf: birga kod yozamiz</h1>
+        <p class="h-hero__lead">Bu saytni sinfimiz jamoa bo'lib, Git va GitHub yordamida yaratdi.</p>
+        <div class="h-actions">
+          <a class="h-btn h-btn--main" href="bizning-sinf.html">Sinfimiz bilan tanishing</a>
+          <a class="h-btn h-btn--ghost" href="#sahifalar">Sahifalarni ko'rish</a>
+        </div>
+        <p class="h-mentor">Mentor: <strong>Abror Urinov</strong></p>
+      </div>
+
+      <div class="term" role="img" aria-label="Git buyruqlari yozilayotgan terminal oynasi">
+        <div class="term__bar">
+          <span class="term__dot term__dot--r"></span>
+          <span class="term__dot term__dot--y"></span>
+          <span class="term__dot term__dot--g"></span>
+          <span class="term__title">11-sinf-sayti</span>
+        </div>
+        <div class="term__body">
+          <span class="term__line" style="--n:25; --d:0.6s"><span class="term__p">$</span> git clone 11-sinf-sayti</span>
+          <span class="term__line" style="--n:30; --d:2.2s"><span class="term__p">$</span> git checkout -b bizning-sinf</span>
+          <span class="term__line" style="--n:30; --d:3.9s"><span class="term__p">$</span> git commit -m "Yangi sahifa"</span>
+          <span class="term__line" style="--n:30; --d:5.6s"><span class="term__p">$</span> git push origin bizning-sinf</span>
+          <span class="term__line term__line--ok" style="--n:18; --d:7.4s">✔ Sayt yangilandi!</span>
+          <span class="term__cursor"></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="h-marquee" aria-hidden="true">
+    <div class="h-marquee__track">
+      <div class="h-marquee__group">
+        <span>HTML</span><span>CSS</span><span>PHP</span><span>MySQL</span><span>Python</span><span>Git</span><span>GitHub</span><span>Junior Developers</span>
+      </div>
+      <div class="h-marquee__group">
+        <span>HTML</span><span>CSS</span><span>PHP</span><span>MySQL</span><span>Python</span><span>Git</span><span>GitHub</span><span>Junior Developers</span>
+      </div>
+    </div>
+  </div>
+
   <main>
-    <h2>Xush kelibsiz!</h2>
-    <p>Yuqoridagi menyudan guruhlar tayyorlagan sahifalarni oching.</p>
+
+    <section class="h-section" id="sahifalar">
+      <h2 class="h-title">Xush kelibsiz!</h2>
+      <p class="h-sub">Quyida guruhlar tayyorlagan sahifalar. Birini tanlang va ochib ko'ring.</p>
+
+      <div class="h-pages">
+        <a class="h-page" href="bizning-sinf.html">
+          <span class="h-page__icon" aria-hidden="true">🎓</span>
+          <h3>Bizning sinf</h3>
+          <p>Sinfimiz, mentorimiz, nimalarni o'rganishimiz va loyihalarimiz haqida.</p>
+          <span class="h-page__go">Sahifani ochish</span>
+        </a>
+
+        <!-- SAHIFALAR: har guruh shu qatordan keyin o'z kartochkasini qo'shadi (yuqoridagi kartochkadan nusxa oling) -->
+
+        <div class="h-page h-page--empty">
+          <span class="h-page__icon h-page__icon--empty" aria-hidden="true">+</span>
+          <h3>Sizning sahifangiz</h3>
+          <p>Guruhingiz sahifasini tayyorlab, shu yerga kartochka qo'shing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section">
+      <h2 class="h-title">Qanday ishlaymiz</h2>
+      <p class="h-sub">Hamma bir xil yo'l bilan ishlaydi, shuning uchun kodimiz aralashib ketmaydi.</p>
+
+      <ol class="h-steps">
+        <li class="h-step">
+          <h3>Loyihani oling</h3>
+          <p>Sayt nusxasini kompyuteringizga yuklab oling.</p>
+          <code>git clone</code>
+        </li>
+        <li class="h-step">
+          <h3>O'z tarmog'ingizni oching</h3>
+          <p>Guruhingiz uchun alohida branch yarating.</p>
+          <code>git checkout -b guruh-nomi</code>
+        </li>
+        <li class="h-step">
+          <h3>Sahifani yozing</h3>
+          <p>HTML va CSS bilan sahifangizni tayyorlang va saqlang.</p>
+          <code>git commit -m "Sahifa tayyor"</code>
+        </li>
+        <li class="h-step">
+          <h3>GitHub'ga yuboring</h3>
+          <p>O'zgarishlarni yuboring va jamoa ko'rib chiqsin.</p>
+          <code>git push origin guruh-nomi</code>
+        </li>
+      </ol>
+    </section>
+
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>Professional IT Development, 2026</p>
   </footer>
+
 </body>
 </html>
